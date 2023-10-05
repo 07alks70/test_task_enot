@@ -11,6 +11,6 @@ class UserDTO
         public string $city,
         public string $email,
         public string $citizenship
-    ){}
-
+    ) {
+    }
 }

@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Log;
 
 class Sms implements NotifyCodeInterface
 {
-
     public function sendCode(int $code): void
     {
-        Log::channel("sms")->info("Code: {$code}");
+        Log::channel('sms')->info("Code: {$code}");
     }
 }

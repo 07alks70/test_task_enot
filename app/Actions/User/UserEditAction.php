@@ -7,23 +7,22 @@ use App\Models\UserEditTask;
 
 class UserEditAction implements UserEditContract
 {
-
     public function handler(UserEditTask $userEditTask): bool
     {
         $user = $userEditTask->user;
-        if (!empty($userEditTask->name)){
+        if (! empty($userEditTask->name)) {
             $user->name = $userEditTask->name;
         }
-        if (!empty($userEditTask->email)){
+        if (! empty($userEditTask->email)) {
             $user->email = $userEditTask->email;
         }
-        if (!empty($userEditTask->city)){
+        if (! empty($userEditTask->city)) {
             $user->city = $userEditTask->city;
         }
-        if (!empty($userEditTask->citizenship)){
+        if (! empty($userEditTask->citizenship)) {
             $user->citizenship = $userEditTask->citizenship;
         }
-        if (!empty($userEditTask->password)){
+        if (! empty($userEditTask->password)) {
             $user->password = $userEditTask->password;
         }
 

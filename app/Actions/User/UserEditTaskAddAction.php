@@ -9,7 +9,6 @@ use App\Enums\SendingServiceEnum;
 
 class UserEditTaskAddAction implements UserEditTaskAddContract
 {
-
     private UserEditTaskRepositoryContract $userEditTaskRepository;
 
     public function __construct(UserEditTaskRepositoryContract $userEditTaskRepository)

@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Log;
 
 class Mail implements NotifyCodeInterface
 {
-
     public function sendCode(int $code): void
     {
-        Log::channel("email")->info("Code: {$code}");
+        Log::channel('email')->info("Code: {$code}");
     }
 }

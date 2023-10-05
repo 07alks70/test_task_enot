@@ -26,18 +26,19 @@ class UserConfirmationTaskRequest extends FormRequest
         /**
          * @var $task UserEditTask
          */
-        $task = $this->route()->parameter("task");
+        $task = $this->route()->parameter('task');
+
         return [
-            "code" => ["required", "numeric", "digits:4", new UserEditTaskCodeConfirmationRule($task)]
+            'code' => ['required', 'numeric', 'digits:4', new UserEditTaskCodeConfirmationRule($task)],
         ];
     }
 
     public function messages()
     {
         return [
-            "code.string" => "Свойство обязательное",
-            "code.numeric" => "Свойство должно быть числом",
-            "code.digits" => "Свойство должно иметь 4 цифры",
+            'code.string' => 'Свойство обязательное',
+            'code.numeric' => 'Свойство должно быть числом',
+            'code.digits' => 'Свойство должно иметь 4 цифры',
         ];
     }
 }

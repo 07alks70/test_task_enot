@@ -7,9 +7,8 @@ use Illuminate\Support\Facades\Log;
 
 class Telegram implements NotifyCodeInterface
 {
-
     public function sendCode(int $code): void
     {
-        Log::channel("telegram")->info("Code: {$code}");
+        Log::channel('telegram')->info("Code: {$code}");
     }
 }

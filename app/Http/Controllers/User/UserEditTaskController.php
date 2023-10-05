@@ -16,8 +16,8 @@ use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class UserEditTaskController extends Controller
 {
-
     private UserEditTaskAddContract $userEditTaskContract;
+
     public UserEditContract $userEditContract;
 
     public function __construct(UserEditTaskAddContract $userEditTaskContract, UserEditContract $userEditContract)
@@ -30,25 +30,25 @@ class UserEditTaskController extends Controller
     {
         $editTaskId = $this->userEditTaskContract->handler(
             userDTO: $request->toUserDTO($user),
-            sendingServiceEnum: SendingServiceEnum::from($request->json("message_service"))
+            sendingServiceEnum: SendingServiceEnum::from($request->json('message_service'))
         );
 
         return Response::json([
-            "task_id" => $editTaskId
+            'task_id' => $editTaskId,
         ], SymfonyResponse::HTTP_CREATED);
     }
 
     public function confirmation(UserConfirmationTaskRequest $request, UserEditTask $task): JsonResponse
     {
         // Тут можно добавить обработоку ошибок и тд (можно расширить)
-        if (!$this->userEditContract->handler($task)){
+        if (! $this->userEditContract->handler($task)) {
             return Response::json([
-                "errors" => ["Системная ошибка"]
+                'errors' => ['Системная ошибка'],
             ], SymfonyResponse::HTTP_BAD_REQUEST);
         }
 
         return Response::json([
-            "success" => "true"
+            'success' => 'true',
         ], SymfonyResponse::HTTP_OK);
     }
 }

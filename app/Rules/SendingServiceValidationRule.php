@@ -8,7 +8,6 @@ use Illuminate\Contracts\Validation\ValidationRule;
 
 class SendingServiceValidationRule implements ValidationRule
 {
-
     /**
      * Run the validation rule.
      *
@@ -18,8 +17,8 @@ class SendingServiceValidationRule implements ValidationRule
     {
         $sendingServiceEnum = SendingServiceEnum::tryFrom($value);
 
-        if ($sendingServiceEnum == null){
-            $fail("Выберите сервис: Telagram-".SendingServiceEnum::TELEGRAM->value.", Email-".SendingServiceEnum::EMAIL->value.", Sms-".SendingServiceEnum::SMS->value);
+        if ($sendingServiceEnum == null) {
+            $fail('Выберите сервис: Telagram-'.SendingServiceEnum::TELEGRAM->value.', Email-'.SendingServiceEnum::EMAIL->value.', Sms-'.SendingServiceEnum::SMS->value);
         }
     }
 }

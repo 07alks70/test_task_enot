@@ -9,6 +9,7 @@ use App\Models\UserEditTask;
 class UserEditTaskObserver
 {
     private SendNotificationFactoryInterface $sendingNotifications;
+
     public function __construct(SendNotificationFactoryInterface $factorySendingNotifications)
     {
         $this->sendingNotifications = $factorySendingNotifications;

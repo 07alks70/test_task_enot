@@ -9,25 +9,20 @@ use App\Models\UserEditTask;
 
 class UserEditTaskRepository implements UserEditTaskRepositoryContract
 {
-
     /**
      * Add new UserEditTask
-     *
-     * @param UserDTO $userDTO
-     * @param SendingServiceEnum $enum
-     * @return UserEditTask
      */
     public function add(UserDTO $userDTO, SendingServiceEnum $enum): UserEditTask
     {
         $userEditTask = UserEditTask::create([
-            "name" => $userDTO->name,
-            "user_id" => $userDTO->userId,
-            "email" => $userDTO->email,
-            "city" => $userDTO->city,
-            "citizenship" => $userDTO->citizenship,
-            "password" => $userDTO->password,
-            "confirmation_code" => rand(1000, 9999),
-            "sending_service" => $enum->value,
+            'name' => $userDTO->name,
+            'user_id' => $userDTO->userId,
+            'email' => $userDTO->email,
+            'city' => $userDTO->city,
+            'citizenship' => $userDTO->citizenship,
+            'password' => $userDTO->password,
+            'confirmation_code' => rand(1000, 9999),
+            'sending_service' => $enum->value,
         ]);
 
         return $userEditTask;
@@ -35,9 +30,6 @@ class UserEditTaskRepository implements UserEditTaskRepositoryContract
 
     /**
      * Get UserEditTask by id
-     *
-     * @param int $id
-     * @return UserEditTask
      */
     public function getById(int $id): UserEditTask
     {
