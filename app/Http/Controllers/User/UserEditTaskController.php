@@ -4,19 +4,15 @@ namespace App\Http\Controllers\User;
 
 use App\Contracts\User\UserEditContract;
 use App\Contracts\User\UserEditTaskAddContract;
-use App\DTO\User\UserDTO;
 use App\Enums\SendingServiceEnum;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\UserConfirmationTaskRequest;
 use App\Http\Requests\UserEditTaskRequest;
 use App\Models\User;
 use App\Models\UserEditTask;
-use App\Rules\SendingServiceValidationRule;
 use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Response;
-use Illuminate\Support\Facades\Validator;
+use Symfony\Component\HttpFoundation\Response as SymfonyResponse;
 
 class UserEditTaskController extends Controller
 {
@@ -39,7 +35,7 @@ class UserEditTaskController extends Controller
 
         return Response::json([
             "task_id" => $editTaskId
-        ], \Symfony\Component\HttpFoundation\Response::HTTP_CREATED);
+        ], SymfonyResponse::HTTP_CREATED);
     }
 
     public function confirmation(UserConfirmationTaskRequest $request, UserEditTask $task): JsonResponse
@@ -48,11 +44,11 @@ class UserEditTaskController extends Controller
         if (!$this->userEditContract->handler($task)){
             return Response::json([
                 "errors" => ["Системная ошибка"]
-            ], 400);
+            ], SymfonyResponse::HTTP_BAD_REQUEST);
         }
 
         return Response::json([
             "success" => "true"
-        ], 200);
+        ], SymfonyResponse::HTTP_OK);
     }
 }
